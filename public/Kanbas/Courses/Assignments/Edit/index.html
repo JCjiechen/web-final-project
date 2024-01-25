@@ -1,0 +1,77 @@
+<select>
+  <option>SpeedGrader</option>
+</select>
+<hr />
+
+<label for="wd-assignment-name">Assignment Name</label><br />
+<br />
+<input value="A1 - ENV + HTML" id="wd-assignment-name" /><br />
+<br />
+<textarea>This is the assignment description</textarea>
+<br />
+
+<table>
+  <tbody>
+    <tr>
+      <td>Points</td>
+      <td><input type="number" value="100" min="0" max="100" /></td>
+    </tr>
+    <tr>
+      <td>Assignment Group</td>
+      <td>
+        <select>
+          <option>Assignments</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Display Grade as</td>
+      <td>
+        <select>
+          <option>Percentage</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">Submission Type</td>
+      <td>
+        <select>
+          <option>Online</option>
+        </select>
+        <br />
+        <label>Online Entry Options</label><br />
+        <input type="checkbox" name="wd-entry-options" id="wd-text-entry" />
+        <label for="wd-text-entry">Text Entry</label><br />
+        <input type="checkbox" name="wd-entry-options" id="wd-website-url" />
+        <label for="wd-website-url">Website URL</label><br />
+        <input
+          type="checkbox"
+          name="wd-entry-options"
+          id="wd-media-recordings"
+        />
+        <label for="wd-media-recordings">Media Recordings</label><br />
+        <input
+          type="checkbox"
+          name="wd-entry-options"
+          id="wd-student-annotations"
+        />
+        <label for="wd-student-annotations">Student Annotations</label><br />
+        <input type="checkbox" name="wd-entry-options" id="wd-file-uploads" />
+        <label for="wd-file-uploads">File Uploads</label><br />
+      </td>
+    </tr>
+    <tr>
+      <td valign="top">Assign</td>
+      <td>
+        Assign to<br />
+        <input name="wd-assign-to" value="Everyone" /><br />
+        Due<br />
+        <input name="wd-due-date" type="date" value="2021-01-01" /><br />
+        Available From<br />
+        <input name="wd-available-from" type="date" value="2021-01-01" /><br />
+        Until<br />
+        <input name="wd-available-until" type="date" value="2021-01-01" /><br />
+      </td>
+    </tr>
+  </tbody>
+</table>
