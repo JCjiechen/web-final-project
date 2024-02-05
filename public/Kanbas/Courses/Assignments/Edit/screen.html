@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css" />
     <link href="/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Navigation/index.css" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -11,236 +12,236 @@
   </head>
   <body>
     <form action="/Kanbas/Courses/Assignments/screen.html">
-      <table width="100%">
-        <tbody>
-          <tr>
-            <td valign="top">
-              <!-- Kanbas Navigation -->
-              <ul class="wd-kanbas-navigation">
-                <li>
-                  <a href="http://northeastern.edu">
-                    <img
-                      width="65"
-                      height="65"
-                      src="/NEU_Logo.png"
-                      alt="NEU Logo"
+      <div class="container-fluid">
+        <div class="row" style="height: 100%">
+          <!-- Kanbas Navigation -->
+          <div class="col-1" style="padding-left: inherit">
+            <ul class="wd-kanbas-navigation">
+              <li>
+                <a href="http://northeastern.edu">
+                  <img
+                    width="65"
+                    height="65"
+                    src="/NEU_Logo.png"
+                    alt="NEU Logo"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="/Kanbas/Account/Profile/screen.html">
+                  <i id="account-icon" class="fa fa-user-circle-o"></i>
+                  <br />
+                  Account
+                </a>
+              </li>
+              <li>
+                <a href="/Kanbas/Dashboard/screen.html">
+                  <i class="fa fa-tachometer"></i>
+                  <br />
+                  Dashboard
+                </a>
+              </li>
+              <li class="wd-active">
+                <a href="/Kanbas/Courses/Home/screen.html">
+                  <i class="fa fa-book"></i>
+                  <br />
+                  Courses
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-calendar"></i>
+                  <br />
+                  Calendar
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-inbox"></i>
+                  <br />
+                  Inbox
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-clock-o"></i>
+                  <br />
+                  History
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-desktop"></i>
+                  <br />
+                  Studio
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-arrow-circle-o-right"></i>
+                  <br />
+                  Commons
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-question-circle"></i>
+                  <br />
+                  Help
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Course Navigation -->
+          <div class="col-1">
+            <ul class="wd-navigation">
+              <li>
+                <a href="/Kanbas/Courses/Home/screen.html"> Home</a>
+              </li>
+              <li>
+                <a href="#"> Modules</a>
+              </li>
+              <li><a href="#"> Piazza</a></li>
+              <li><a href="#"> Zoom Meetings</a></li>
+              <li class="wd-active">
+                <a href="/Kanbas/Courses/Assignments/screen.html">
+                  Assignments</a
+                >
+              </li>
+              <li><a href="#"> Quizzes</a></li>
+              <li><a href="/Kanbas/Courses/Grades/screen.html"> Grades</a></li>
+              <li><a href="#"> People</a></li>
+              <li><a href="#"> Panopto Video</a></li>
+              <li><a href="#"> Discussions</a></li>
+              <li><a href="#"> Announcements</a></li>
+              <li><a href="#"> Pages</a></li>
+              <li><a href="#"> Files</a></li>
+              <li><a href="#"> Modules</a></li>
+              <li><a href="#"> Outcomes</a></li>
+              <li><a href="#"> Collaborations</a></li>
+              <li><a href="#"> Syllabus</a></li>
+              <li>
+                <a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">
+                  Settings
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Assignments Edit -->
+          <div class="col-10">
+            <select>
+              <option>SpeedGrader</option>
+            </select>
+            <hr />
+
+            <label for="wd-assignment-name">Assignment Name</label><br />
+            <br />
+            <input value="A1 - ENV + HTML" id="wd-assignment-name" /><br />
+            <br />
+            <textarea>This is the assignment description</textarea>
+            <br />
+
+            <table>
+              <tbody>
+                <tr>
+                  <td>Points</td>
+                  <td>
+                    <input type="number" value="100" min="0" max="100" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Assignment Group</td>
+                  <td>
+                    <select>
+                      <option>Assignments</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Display Grade as</td>
+                  <td>
+                    <select>
+                      <option>Percentage</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">Submission Type</td>
+                  <td>
+                    <select>
+                      <option>Online</option>
+                    </select>
+                    <br />
+                    <label>Online Entry Options</label><br />
+                    <input
+                      type="checkbox"
+                      name="wd-entry-options"
+                      id="wd-text-entry"
                     />
-                  </a>
-                </li>
-                <li>
-                  <a href="/Kanbas/Account/Profile/screen.html">
-                    <i id="account-icon" class="fa fa-user-circle-o"></i>
-                    <br />
-                    Account
-                  </a>
-                </li>
-                <li>
-                  <a href="/Kanbas/Dashboard/screen.html">
-                    <i class="fa fa-tachometer"></i>
-                    <br />
-                    Dashboard
-                  </a>
-                </li>
-                <li class="wd-active">
-                  <a href="/Kanbas/Courses/Home/screen.html">
-                    <i class="fa fa-book"></i>
-                    <br />
-                    Courses
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-calendar"></i>
-                    <br />
-                    Calendar
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-inbox"></i>
-                    <br />
-                    Inbox
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-clock-o"></i>
-                    <br />
-                    History
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-desktop"></i>
-                    <br />
-                    Studio
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-arrow-circle-o-right"></i>
-                    <br />
-                    Commons
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-question-circle"></i>
-                    <br />
-                    Help
-                  </a>
-                </li>
-              </ul>
-            </td>
-            <td valign="top">
-              <!-- Course Navigation -->
-              <ul>
-                <li><a href="/Kanbas/Courses/Home/screen.html"> Home</a></li>
-                <li>
-                  <a href="#"> Modules</a>
-                </li>
-                <li><a href="#"> Piazza</a></li>
-                <li><a href="#"> Zoom Meetings</a></li>
-                <li>
-                  <a href="/Kanbas/Courses/Assignments/screen.html">
-                    Assignments</a
-                  >
-                </li>
-                <li><a href="#"> Quizzes</a></li>
-                <li>
-                  <a href="/Kanbas/Courses/Grades/screen.html"> Grades</a>
-                </li>
-                <li><a href="#"> People</a></li>
-                <li><a href="#"> Panopto Video</a></li>
-                <li><a href="#"> Discussions</a></li>
-                <li><a href="#"> Announcements</a></li>
-                <li><a href="#"> Pages</a></li>
-                <li><a href="#"> Files</a></li>
-                <li><a href="#"> Rubrics</a></li>
-                <li><a href="#"> Outcomes</a></li>
-                <li><a href="#"> Collaborations</a></li>
-                <li><a href="#"> Syllabus</a></li>
-                <li>
-                  <a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">
-                    Settings
-                  </a>
-                </li>
-              </ul>
-            </td>
-            <td valign="top">
-              <!-- Assignment Edit -->
-              <select>
-                <option>SpeedGrader</option>
-              </select>
-              <hr />
-
-              <label for="wd-assignment-name">Assignment Name</label><br />
-              <br />
-              <input value="A1 - ENV + HTML" id="wd-assignment-name" /><br />
-              <br />
-              <textarea>This is the assignment description</textarea>
-              <br />
-
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Points</td>
-                    <td>
-                      <input type="number" value="100" min="0" max="100" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Assignment Group</td>
-                    <td>
-                      <select>
-                        <option>Assignments</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Display Grade as</td>
-                    <td>
-                      <select>
-                        <option>Percentage</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td valign="top">Submission Type</td>
-                    <td>
-                      <select>
-                        <option>Online</option>
-                      </select>
-                      <br />
-                      <label>Online Entry Options</label><br />
-                      <input
-                        type="checkbox"
-                        name="wd-entry-options"
-                        id="wd-text-entry"
-                      />
-                      <label for="wd-text-entry">Text Entry</label><br />
-                      <input
-                        type="checkbox"
-                        name="wd-entry-options"
-                        id="wd-website-url"
-                      />
-                      <label for="wd-website-url">Website URL</label><br />
-                      <input
-                        type="checkbox"
-                        name="wd-entry-options"
-                        id="wd-media-recordings"
-                      />
-                      <label for="wd-media-recordings">Media Recordings</label
-                      ><br />
-                      <input
-                        type="checkbox"
-                        name="wd-entry-options"
-                        id="wd-student-annotations"
-                      />
-                      <label for="wd-student-annotations"
-                        >Student Annotations</label
-                      ><br />
-                      <input
-                        type="checkbox"
-                        name="wd-entry-options"
-                        id="wd-file-uploads"
-                      />
-                      <label for="wd-file-uploads">File Uploads</label><br />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td valign="top">Assign</td>
-                    <td>
-                      Assign to<br />
-                      <input name="wd-assign-to" value="Everyone" /><br />
-                      Due<br />
-                      <input
-                        name="wd-due-date"
-                        type="date"
-                        value="2021-01-01"
-                      /><br />
-                      Available From<br />
-                      <input
-                        name="wd-available-from"
-                        type="date"
-                        value="2021-01-01"
-                      /><br />
-                      Until<br />
-                      <input
-                        name="wd-available-until"
-                        type="date"
-                        value="2021-01-01"
-                      /><br />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="submit">Cancel</button>
-              <button type="submit">Save</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                    <label for="wd-text-entry">Text Entry</label><br />
+                    <input
+                      type="checkbox"
+                      name="wd-entry-options"
+                      id="wd-website-url"
+                    />
+                    <label for="wd-website-url">Website URL</label><br />
+                    <input
+                      type="checkbox"
+                      name="wd-entry-options"
+                      id="wd-media-recordings"
+                    />
+                    <label for="wd-media-recordings">Media Recordings</label
+                    ><br />
+                    <input
+                      type="checkbox"
+                      name="wd-entry-options"
+                      id="wd-student-annotations"
+                    />
+                    <label for="wd-student-annotations"
+                      >Student Annotations</label
+                    ><br />
+                    <input
+                      type="checkbox"
+                      name="wd-entry-options"
+                      id="wd-file-uploads"
+                    />
+                    <label for="wd-file-uploads">File Uploads</label><br />
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="top">Assign</td>
+                  <td>
+                    Assign to<br />
+                    <input name="wd-assign-to" value="Everyone" /><br />
+                    Due<br />
+                    <input
+                      name="wd-due-date"
+                      type="date"
+                      value="2021-01-01"
+                    /><br />
+                    Available From<br />
+                    <input
+                      name="wd-available-from"
+                      type="date"
+                      value="2021-01-01"
+                    /><br />
+                    Until<br />
+                    <input
+                      name="wd-available-until"
+                      type="date"
+                      value="2021-01-01"
+                    /><br />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit">Cancel</button>
+            <button type="submit">Save</button>
+          </div>
+        </div>
+      </div>
     </form>
   </body>
 </html>
