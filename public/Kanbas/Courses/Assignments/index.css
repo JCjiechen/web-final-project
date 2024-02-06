@@ -54,3 +54,7 @@
 .wd-nav-navigation a {
   color: red;
 }
+.wd-assignment-link {
+  color: black;
+  text-decoration: none;
+}
