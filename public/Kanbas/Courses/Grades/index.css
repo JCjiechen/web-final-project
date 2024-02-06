@@ -1,4 +1,12 @@
 .table-responsive {
   white-space: normal;
-  overflow-wrap: break-word;
+}
+
+tbody tr td:first-child {
+  color: #d41b2c;
+}
+
+tbody tr td input {
+  border: 1px solid #d41b2c;
+  text-align: center;
 }
