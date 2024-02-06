@@ -204,7 +204,9 @@
 
         <div class="col">
           <!-- Breadcrumb bar -->
-          <div class="col-md-auto d-flex flex-row align-items-center mt-2">
+          <div
+            class="d-none d-md-flex col-md-auto d-flex flex-row align-items-center mt-2"
+          >
             <i class="fa fa-bars me-2 text-danger"></i>
             <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
               <ol class="breadcrumb m-0">
@@ -222,7 +224,7 @@
               </a>
             </div>
           </div>
-          <hr />
+          <hr class="d-none d-md-flex" />
 
           <div class="row">
             <!-- Course Navigation -->
@@ -280,13 +282,31 @@
                           <button class="btn btn-light m-2">
                             View Progress
                           </button>
-                          <button class="btn btn-light dropdown-toggle">
+                          <button
+                            class="btn btn-light dropdown-toggle"
+                            type="button"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
                             <i
                               class="fa fa-check-circle text-success"
                               aria-hidden="true"
                             ></i>
                             Publish All
                           </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <a href="#" class="dropdown-item active"
+                                >Publish All</a
+                              >
+                            </li>
+                            <li>
+                              <a href="#" class="dropdown-item"
+                                >Unpublish All</a
+                              >
+                            </li>
+                          </ul>
                           <button class="btn btn-danger">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                             Module
