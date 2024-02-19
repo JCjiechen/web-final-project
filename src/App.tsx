@@ -1,6 +1,6 @@
 import React from "react";
 // import logo from "./logo.svg";
-// import "./App.css";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Labs from "./Labs";
 import HelloWorld from "./Labs/a3/HelloWorld";
@@ -10,7 +10,7 @@ import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <HashRouter>
-      <div>
+      <div id="root">
         <Routes>
           <Route path="/" element={<Navigate to="/Labs" />} />
           <Route path="/Labs/*" element={<Labs />} />
