@@ -4,6 +4,7 @@ import Modules from "./Modules";
 import "./index.css";
 import BreadcrumbBar from "./BreadcrumbBar";
 import Home from "./Home";
+import Assignments from "./Assignments";
 
 function Courses() {
   return (
@@ -26,7 +27,7 @@ function Courses() {
             <Route path="Modules" element={<Modules />} />
             <Route path="Piazza" element={<h1>Piazza</h1>} />
             <Route path="ZoomMeetings" element={<h1>Zoom Meetings</h1>} />
-            <Route path="Assignments" element={<h1>Assignments</h1>} />
+            <Route path="Assignments" element={<Assignments />} />
             <Route
               path="Assignments/:assignmentId"
               element={<h1>Assignment Editor</h1>}
