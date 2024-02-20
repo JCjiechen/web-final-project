@@ -13,7 +13,7 @@ function Kanbas() {
         <div className="row h-100">
           {/* Kanbas Navigation  */}
           <div
-            className="col-auto d-none d-sm-block"
+            className="col-auto d-none d-md-block"
             style={{ paddingLeft: "inherit" }}
           >
             <KanbasNavigation />

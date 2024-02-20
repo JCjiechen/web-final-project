@@ -34,13 +34,9 @@ function Dashboard() {
                       fontWeight: "bold",
                     }}
                   >
-                    {course.name}
+                    {course.number} {course.name}
                   </Link>
-                  <p className="card-text">
-                    {course.name}
-                    <br />
-                    Term/Year: Spring 2024
-                  </p>
+                  <p className="card-text">Term/Year: Spring 2024</p>
                   <Link
                     to={`/Kanbas/Courses/${course._id}/Home`}
                     className="btn btn-primary"

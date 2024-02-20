@@ -47,7 +47,8 @@ function KanbasNavigation() {
               }
             >
               {link.icon}
-            </span>{" "}
+            </span>
+            <br />
             {link.label}
           </Link>
         </li>

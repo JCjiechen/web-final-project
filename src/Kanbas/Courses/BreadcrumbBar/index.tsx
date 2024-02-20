@@ -24,7 +24,7 @@ function BreadcrumbBar() {
             </Link>
           </li>
           <span className="divider m-2">{">"}</span>
-          {extractCourseNavTabFromUrl()}
+          {extractCourseNavTabFromUrl(courseId)}
         </ol>
       </nav>
       <div className="ms-auto float-end  align-items-center">
@@ -38,7 +38,7 @@ function BreadcrumbBar() {
 }
 
 // This function will return the specific tab in the course navigation that the user is currently on. (i.e., Home, Modules, Piazza, etc.)
-function extractCourseNavTabFromUrl() {
+function extractCourseNavTabFromUrl(courseId: string | undefined) {
   // Get the current url hash
   const url = window.location.hash;
   // Split the url by "/" to get an array of its segments
@@ -56,7 +56,11 @@ function extractCourseNavTabFromUrl() {
       return (
         <>
           <li className="breadcrumb-item">
-            <Link key={tabName} className="wd-link-red" to={""}>
+            <Link
+              key={tabName}
+              className="wd-breadcrumb-bar-red"
+              to={`/Kanbas/Courses/${courseId}/Assignments`}
+            >
               {tabName}
             </Link>
           </li>
