@@ -1,0 +1,43 @@
+.wd-course-status-icon {
+  margin-right: 5px;
+}
+
+.wd-course-status-button {
+  vertical-align: middle;
+}
+
+.wd-course-home-coming-up {
+  padding-left: 0px;
+}
+.wd-course-home-coming-up li {
+  list-style: none;
+}
+.wd-course-home-coming-up li a {
+  color: rgb(181, 40, 40);
+}
+.wd-course-home-coming-up-icon {
+  color: gray;
+}
+.wd-course-home-coming-up li p {
+  color: gray;
+  font-size: 12px;
+  margin-left: 35px;
+}
+
+.wd-course-home-todo {
+  padding-left: 0px;
+}
+.wd-course-home-todo li {
+  list-style: none;
+}
+.wd-course-home-todo li a {
+  color: rgb(181, 40, 40);
+}
+.wd-course-home-todo li p {
+  color: gray;
+  font-size: 12px;
+  margin-left: 35px;
+}
+.wd-course-home-todo-cross-icon {
+  color: gray;
+}
