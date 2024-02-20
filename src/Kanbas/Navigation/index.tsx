@@ -55,4 +55,5 @@ function KanbasNavigation() {
     </ul>
   );
 }
+
 export default KanbasNavigation;
