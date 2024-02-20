@@ -1,6 +1,6 @@
-import { courses } from "../../Kanbas/Database";
-import { Navigate, Route, Routes, useParams } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CourseNavigation from "./Navigation";
+import Modules from "./Modules";
 import "./index.css";
 import BreadcrumbBar from "./BreadcrumbBar";
 
@@ -22,7 +22,7 @@ function Courses() {
           <Routes>
             <Route path="/" element={<Navigate to="Home" />} />
             <Route path="Home" element={<h1>Home</h1>} />
-            <Route path="Modules" element={<h1>Modules</h1>} />
+            <Route path="Modules" element={<Modules />} />
             <Route path="Piazza" element={<h1>Piazza</h1>} />
             <Route path="ZoomMeetings" element={<h1>Zoom Meetings</h1>} />
             <Route path="Assignments" element={<h1>Assignments</h1>} />
