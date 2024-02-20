@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { HiMiniBars3 } from "react-icons/hi2";
-import { FaEye } from "react-icons/fa";
+import { FaGlasses } from "react-icons/fa";
 import "./index.css";
 import { courses } from "../../Database";
 
@@ -29,7 +29,7 @@ function BreadcrumbBar() {
       </nav>
       <div className="ms-auto float-end  align-items-center">
         <Link className="btn btn-light" to={""}>
-          <FaEye className="m-2" />
+          <FaGlasses className="m-2" />
           Student View
         </Link>
       </div>
@@ -79,7 +79,7 @@ function extractCourseNavTabFromUrl() {
 }
 
 function addSpacesBetweenWords(inputString: string): string {
-  return inputString.replace(/([a-z])([A-Z])/g, '$1 $2');
+  return inputString.replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
 export default BreadcrumbBar;

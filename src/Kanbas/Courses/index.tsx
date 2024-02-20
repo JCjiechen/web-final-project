@@ -3,6 +3,7 @@ import CourseNavigation from "./Navigation";
 import Modules from "./Modules";
 import "./index.css";
 import BreadcrumbBar from "./BreadcrumbBar";
+import Home from "./Home";
 
 function Courses() {
   return (
@@ -21,7 +22,7 @@ function Courses() {
         <div className="col col col-lg overflow-y-scroll">
           <Routes>
             <Route path="/" element={<Navigate to="Home" />} />
-            <Route path="Home" element={<h1>Home</h1>} />
+            <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules />} />
             <Route path="Piazza" element={<h1>Piazza</h1>} />
             <Route path="ZoomMeetings" element={<h1>Zoom Meetings</h1>} />
