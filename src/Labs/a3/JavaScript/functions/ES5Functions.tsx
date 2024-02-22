@@ -3,7 +3,7 @@ function ES5Functions() {
     return a + b;
   }
   const twoPlusFour = add(2, 4);
-  console.log(twoPlusFour);
+  // console.log(twoPlusFour);
   return (
     <>
       <h2>Functions</h2>

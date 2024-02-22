@@ -21,13 +21,13 @@ function WorkingWithArrays() {
     stringArray1,
   ];
 
-  console.log("Working with Arrays");
-  console.log({ functionScoped });
-  console.log({ blockScoped });
-  console.log({ constant1 });
-  console.log({ numberArray1 });
-  console.log({ stringArray1 });
-  console.log({ variableArray1 });
+  // console.log("Working with Arrays");
+  // console.log({ functionScoped });
+  // console.log({ blockScoped });
+  // console.log({ constant1 });
+  // console.log({ numberArray1 });
+  // console.log({ stringArray1 });
+  // console.log({ variableArray1 });
   return (
     <>
       <h2>Working with Arrays</h2>
