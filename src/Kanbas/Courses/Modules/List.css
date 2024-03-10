@@ -57,3 +57,7 @@
 a {
   text-decoration: none;
 }
+
+.wd-modules button {
+  border-radius: 10%;
+}
