@@ -9,9 +9,14 @@ function ClickEvent() {
   return (
     <div>
       <h2>Click Event</h2>
-      <button onClick={hello}> Click Hello</button>
-      <button onClick={() => lifeIs("Good!")}> Click Good</button>
+      <button className="btn btn-primary m-2" onClick={hello}>
+        Click Hello
+      </button>
+      <button className="btn btn-primary m-2" onClick={() => lifeIs("Good!")}>
+        Click Good
+      </button>
       <button
+        className="btn btn-primary m-2"
         onClick={() => {
           hello();
           lifeIs("Great!");
