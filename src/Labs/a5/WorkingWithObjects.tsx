@@ -139,6 +139,7 @@ function WorkingWithObjects() {
       >
         Update Completed
       </a>
+      <hr />
     </div>
   );
 }

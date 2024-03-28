@@ -79,6 +79,7 @@ function EncodingParametersInURLs() {
       >
         Divide {a} / {b}
       </a>
+      <hr />
     </div>
   );
 }
