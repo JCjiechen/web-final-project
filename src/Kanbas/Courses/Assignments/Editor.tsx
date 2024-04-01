@@ -9,6 +9,7 @@ import {
   setAssignment,
 } from "./assignmentsReducer";
 import { KanbasState } from "../../store";
+import * as client from "./client";
 
 function AssignmentEditor() {
   const { courseId } = useParams();
@@ -21,15 +22,26 @@ function AssignmentEditor() {
   );
   const dispatch = useDispatch();
 
+  const handleAddAssignment = () => {
+    client.createAssignment(courseId, assignment).then((assignment) => {
+      dispatch(addAssignment(assignment));
+    });
+  };
+
+  const handleUpdateAssignment = async () => {
+    const status = await client.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
   const handleSave = () => {
     const existingAssignment = assignmentList.find(
       (a) => a._id === assignment._id
     );
 
     if (existingAssignment) {
-      dispatch(updateAssignment({ ...assignment }));
+      handleUpdateAssignment();
     } else {
-      dispatch(addAssignment({ ...assignment, course: courseId }));
+      handleAddAssignment();
     }
 
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);

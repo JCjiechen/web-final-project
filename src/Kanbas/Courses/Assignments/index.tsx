@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaCaretDown,
   FaCheckCircle,
@@ -14,8 +14,10 @@ import {
   deleteAssignment,
   setAssignment,
   setInitialAssignment,
+  setAssignments,
 } from "./assignmentsReducer";
 import { KanbasState } from "../../store";
+import * as client from "./client";
 
 function Assignments() {
   const { courseId } = useParams();
@@ -34,6 +36,24 @@ function Assignments() {
       setDeleteDialogOpen(false);
     }
   };
+
+  const handleDeleteAssignment = (moduleId: string) => {
+    const shouldDelete = window.confirm(
+      "Are you sure you want to remove the assignment?"
+    );
+    if (shouldDelete) {
+      client.deleteAssignment(moduleId).then((status) => {
+        dispatch(deleteAssignment(moduleId));
+      });
+      setDeleteDialogOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    client
+      .findAssignmentsForCourse(courseId)
+      .then((modules) => dispatch(setAssignments(modules)));
+  }, [courseId]);
 
   return (
     <>
@@ -113,7 +133,7 @@ function Assignments() {
                     <span className="ms-auto">
                       <button
                         className="btn btn-danger ms-2"
-                        onClick={() => handleDelete(assignment._id)}
+                        onClick={() => handleDeleteAssignment(assignment._id)}
                       >
                         Delete
                       </button>
