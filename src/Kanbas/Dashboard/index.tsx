@@ -108,7 +108,7 @@ function Dashboard({
             >
               <div className="card" style={{ width: 270 }}>
                 <img
-                  src={`/images/${course.image}`}
+                  src={`/images/colorbg.jpeg`}
                   className="card-img-top"
                   style={{ height: 150 }}
                   alt={course.name}

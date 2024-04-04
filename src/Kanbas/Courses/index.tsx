@@ -7,10 +7,23 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import Grades from "./Grades";
+import { useState, useEffect } from "react";
+import axios from "axios";
+const API_BASE = process.env.REACT_APP_API_BASE;
 
-function Courses({ courses }: { courses: any[] }) {
+function Courses() {
   const { courseId } = useParams();
-  const course = courses.find((course) => course._id === courseId);
+  const COURSES_API = `${API_BASE}/api/courses`;
+  const [course, setCourse] = useState<any>({ _id: "" });
+  const findCourseById = async (courseId?: string) => {
+    const response = await axios.get(`${COURSES_API}/${courseId}`);
+    setCourse(response.data);
+  };
+
+  useEffect(() => {
+    findCourseById(courseId);
+  }, [courseId]);
+
   return (
     <>
       {/* Breadcrumb bar */}
