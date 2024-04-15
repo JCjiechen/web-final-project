@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import axios from "axios";
 import Account from "./Acount";
 const API_BASE = process.env.REACT_APP_API_BASE;
+axios.defaults.withCredentials = true;
 
 function Kanbas() {
   const [courses, setCourses] = useState<any[]>([]);
@@ -24,23 +25,57 @@ function Kanbas() {
 
   const COURSES_API = `${API_BASE}/api/courses`;
 
+  const axiosWithCredentials = axios.create({
+    withCredentials: true,
+  });
+
+  // const findAllCourses = async () => {
+  //   const response = await axios.get(COURSES_API);
+  //   setCourses(response.data);
+  // };
   const findAllCourses = async () => {
-    const response = await axios.get(COURSES_API);
+    const response = await axiosWithCredentials.get(`${COURSES_API}`);
     setCourses(response.data);
+    return response.data;
   };
 
+  // const addNewCourse = async () => {
+  //   const response = await axios.post(COURSES_API, course);
+  //   setCourses([...courses, response.data]);
+  // };
   const addNewCourse = async () => {
-    const response = await axios.post(COURSES_API, course);
+    const response = await axiosWithCredentials.post(`${COURSES_API}`, course);
     setCourses([...courses, response.data]);
   };
 
-  const deleteCourse = async (courseId: string) => {
-    const response = await axios.delete(`${COURSES_API}/${courseId}`);
-    setCourses(courses.filter((c) => c._id !== courseId));
+  // const deleteCourse = async (courseId: string) => {
+  //   const response = await axios.delete(`${COURSES_API}/${courseId}`);
+  //   setCourses(courses.filter((c) => c._id !== courseId));
+  // };
+  const deleteCourse = async (course: any) => {
+    const response = await axiosWithCredentials.delete(
+      `${COURSES_API}/${course._id}`
+    );
+    setCourses(courses.filter((c) => c._id !== course._id));
+    return response.data;
   };
 
+  // const updateCourse = async () => {
+  //   const response = await axios.put(`${COURSES_API}/${course._id}`, course);
+  //   setCourses(
+  //     courses.map((c) => {
+  //       if (c._id === course._id) {
+  //         return course;
+  //       }
+  //       return c;
+  //     })
+  //   );
+  // };
   const updateCourse = async () => {
-    const response = await axios.put(`${COURSES_API}/${course._id}`, course);
+    const response = await axiosWithCredentials.put(
+      `${COURSES_API}/${course._id}`,
+      course
+    );
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {

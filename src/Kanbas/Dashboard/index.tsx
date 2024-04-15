@@ -149,7 +149,7 @@ function Dashboard({
                     className="btn btn-danger ms-2"
                     onClick={(event) => {
                       event.preventDefault();
-                      deleteCourse(course._id);
+                      deleteCourse(course);
                     }}
                   >
                     Delete
