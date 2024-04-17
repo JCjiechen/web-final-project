@@ -1,0 +1,12 @@
+.wd-assignment-editor-span {
+  vertical-align: middle;
+}
+
+.nav-tabs .nav-item.selected .nav-link {
+  color: black;
+  border-color: lightgray;
+}
+
+.nav-tabs .nav-item.not-selected .nav-link {
+  color: #d41b2c;
+}
