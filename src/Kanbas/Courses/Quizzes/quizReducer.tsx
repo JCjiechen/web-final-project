@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  quizzes: [] as { _id: string; title: string; description: string }[],
+  quizzes: [] as { _id: string; name: string; description: string }[],
   quiz: {
     _id: "",
     name: "New Quiz",

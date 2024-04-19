@@ -50,7 +50,7 @@ function QuizzEditor() {
 
   const handleCancel = () => {
     // Reset state to initial state
-    dispatch(setQuiz({ ...quiz }));
+    dispatch(setQuiz({ ...initialState }));
     navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
   };
 
@@ -474,7 +474,7 @@ function QuizzEditor() {
               id="displayCheckbox"
             />
             <label className="form-check-label" htmlFor="displayCheckbox">
-              Do not count this quiz towards the final grade
+              Notify users this quiz has changed
             </label>
           </div>
         </div>
