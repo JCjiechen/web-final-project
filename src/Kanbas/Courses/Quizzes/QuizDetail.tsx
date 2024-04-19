@@ -2,14 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { KanbasState } from "../../store";
-import {
-  addQuiz,
-  deleteQuiz,
-  updateQuiz,
-  setQuiz,
-  setInitialQuiz,
-  setQuizzes,
-} from "./quizReducer";
+import { updateQuiz, setQuiz } from "./quizReducer";
 import { FaCheckCircle, FaEllipsisV, FaBan } from "react-icons/fa";
 import { TiPencil } from "react-icons/ti";
 import "./QuizDetail.css";
@@ -59,9 +52,15 @@ function QuizDetail() {
               )}
             </button>
 
-            <button className="btn btn-light m-1">
-              <span className="wd-assignment-editor-span">Preview</span>
-            </button>
+            <Link
+              to={`/Kanbas/Courses/${courseId}/Quizzes/Preview/${quiz._id}`}
+              onClick={() => dispatch(setQuiz(quiz))}
+            >
+              <button className="btn btn-light m-1">
+                <span className="wd-assignment-editor-span">Preview</span>
+              </button>
+            </Link>
+
             <Link
               to={`/Kanbas/Courses/${courseId}/Quizzes/Editor/${quiz._id}`}
               onClick={() => dispatch(setQuiz(quiz))}
