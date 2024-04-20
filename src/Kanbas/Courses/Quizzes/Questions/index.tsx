@@ -3,22 +3,72 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { KanbasState } from "../../../store";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import QuestionEditor from "./QuestionEditor";
+import { setQuestions } from "./questionsReducer";
+import { updateQuiz, setQuiz } from "../quizReducer";
+import * as client from "./client";
+import * as quizClient from "../client";
 
 function Questions() {
-  const { courseId } = useParams();
+  const { courseId, quizId } = useParams();
   const navigate = useNavigate();
 
-  const quizList = useSelector(
-    (state: KanbasState) => state.quizzesReducer.quizzes
-  );
   const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
+  const questionList = useSelector(
+    (state: KanbasState) => state.questionsReducer.questions
+  );
+  const [initialState, setInitialState] = useState({ ...questionList });
   const dispatch = useDispatch();
 
   const handleQuestionsClick = (event: any) => {
     event.preventDefault(); // Prevent default link behavior (navigation)
   };
+
+  const handleCancel = async () => {
+    const newQuestionList = { ...initialState };
+    const quizQuestionList = await client.findQuestionsForQuiz(quizId);
+    const newQuestionArray = Object.values(newQuestionList);
+
+    quizQuestionList.forEach((question: any) => {
+      let found = false;
+      for (let i = 0; i < newQuestionArray.length; i++) {
+        if (newQuestionArray[i]._id === question._id) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        client
+          .deleteQuestion(question._id)
+          .then(() => {
+            console.log(`Deleted question with ID ${question._id}`);
+          })
+          .catch((error) => {
+            console.error(
+              `Error deleting question with ID ${question._id}: ${error}`
+            );
+          });
+      }
+    });
+
+    dispatch(setQuestions(Object.values(initialState)));
+  };
+
+  const handleSavePublish = () => {
+    const updatedQuiz = { ...quiz, isPublish: true };
+    dispatch(setQuiz({ ...quiz, isPublish: updatedQuiz.isPublish }));
+    quizClient.updateQuiz(updatedQuiz).then((updatedQuiz: any) => {
+      dispatch(updateQuiz(updatedQuiz));
+    });
+  };
+
+  useEffect(() => {
+    client
+      .findQuestionsForQuiz(quizId)
+      .then((questions) => dispatch(setQuestions(questions)));
+  }, [quizId]);
 
   return (
     <>
@@ -95,18 +145,13 @@ function Questions() {
         </div>
         <div className="col-auto">
           <div className="float-end m-2">
-            <button className="btn btn-light">
-              {/* <button onClick={handleCancel} className="btn btn-light"> */}
+            <button onClick={handleCancel} className="btn btn-light">
               Cancel
             </button>
-            <button className="btn btn-light m-1">
-              {/* <button onClick={handleSavePublish} className="btn btn-light m-1"> */}
+            <button onClick={handleSavePublish} className="btn btn-light m-1">
               Save & Publish
             </button>
-            <button className="btn btn-danger m-1">
-              {/* <button onClick={handleSave} className="btn btn-danger m-1"> */}
-              Save
-            </button>
+            <button className="btn btn-danger m-1">Save</button>
           </div>
         </div>
       </div>

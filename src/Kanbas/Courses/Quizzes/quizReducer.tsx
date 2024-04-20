@@ -54,15 +54,8 @@ const quizzesSlice = createSlice({
     setQuiz: (state, action) => {
       state.quiz = action.payload;
     },
-    setInitialQuiz: (state, action) => {
-      return {
-        ...state,
-        quiz: {
-          ...initialState.quiz,
-          _id: action.payload._id,
-          course: action.payload.course,
-        },
-      };
+    setInitialQuiz: (state) => {
+      state.quiz = initialState.quiz;
     },
   },
 });

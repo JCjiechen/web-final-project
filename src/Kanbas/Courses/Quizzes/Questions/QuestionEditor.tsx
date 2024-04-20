@@ -212,7 +212,7 @@ function QuestionEditor() {
 
   return (
     <>
-      {questionList &&
+      {questionList.length !== 0 &&
         questionList
           .filter((question) => question.quizId === quizId)
           .map((question) => (

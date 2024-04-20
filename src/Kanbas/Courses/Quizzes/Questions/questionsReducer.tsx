@@ -66,7 +66,7 @@ const questionsSlice = createSlice({
       state.question = action.payload;
     },
     setInitialQuestion: (state) => {
-      state.question = initialState.question; // Reset to initial state
+      state.question = initialState.question;
     },
     setEditingQuestion: (state, action) => {
       state.editingQuestion = action.payload;

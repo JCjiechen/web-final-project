@@ -39,11 +39,13 @@ function QuizzEditor() {
     navigate(`/Kanbas/Courses/${courseId}/Quizzes/Detail/${quiz._id}`);
   };
 
-  const handleSavePublish = () => {
+  const handleSavePublish = async () => {
     const existingQuiz = quizList.find((a) => a._id === quiz._id);
     if (existingQuiz) {
-      handleUpdateQuiz();
-      dispatch(setQuiz({ ...quiz, isPublish: true }));
+      const newQuiz = { ...quiz, isPublish: true };
+      const status = await client.updateQuiz(newQuiz);
+      dispatch(updateQuiz(newQuiz));
+      dispatch(setQuiz(newQuiz));
     }
     navigate(`/Kanbas/Courses/${courseId}/Quizzes`);
   };
@@ -401,7 +403,13 @@ function QuizzEditor() {
                           type="date"
                           className="form-control mb-3"
                           name="wd-due-date"
-                          value={quiz.dueDate}
+                          value={
+                            quiz.dueDate
+                              ? new Date(quiz.dueDate)
+                                  .toISOString()
+                                  .split("T")[0]
+                              : ""
+                          }
                           onChange={(e) =>
                             dispatch(
                               setQuiz({
@@ -419,7 +427,13 @@ function QuizzEditor() {
                               type="date"
                               className="form-control mb-3"
                               name="wd-available-from"
-                              value={quiz.availableDate}
+                              value={
+                                quiz.availableDate
+                                  ? new Date(quiz.availableDate)
+                                      .toISOString()
+                                      .split("T")[0]
+                                  : ""
+                              }
                               onChange={(e) =>
                                 dispatch(
                                   setQuiz({
@@ -437,7 +451,13 @@ function QuizzEditor() {
                               type="date"
                               className="form-control mb-3"
                               name="wd-available-until"
-                              value={quiz.availableUntilDate}
+                              value={
+                                quiz.availableUntilDate
+                                  ? new Date(quiz.availableUntilDate)
+                                      .toISOString()
+                                      .split("T")[0]
+                                  : ""
+                              }
                               onChange={(e) =>
                                 dispatch(
                                   setQuiz({

@@ -58,10 +58,35 @@ function Quizzes() {
     }
   };
 
+  const newQuiz = {
+    _id: "",
+    name: "New Quiz",
+    course: "",
+    description: "New Description",
+    points: 0,
+    type: "Graded Quiz",
+    group: "Quizzes",
+    time: 20,
+    attemptTimes: null,
+    questions: null,
+    availableDate: null,
+    availableUntilDate: null,
+    dueDate: null,
+    accessCode: "",
+    isShuffle: true,
+    isMultipleAttempts: false,
+    isOneQuestionAtaTime: true,
+    isWebcam: false,
+    isLockQuestionAfterAnswer: false,
+    isPublish: false,
+    showCorrectAnswers: "Immediately",
+  };
+
   const handleCreateQuiz = () => {
-    client.createQuiz(courseId, quiz).then((quiz) => {
+    dispatch(setInitialQuiz());
+    client.createQuiz(courseId, newQuiz).then((quiz) => {
       dispatch(addQuiz(quiz));
-      dispatch(setInitialQuiz(quiz));
+      dispatch(setQuiz(quiz));
       navigate(`/Kanbas/Courses/${courseId}/Quizzes/Detail/${quiz._id}`);
     });
   };
