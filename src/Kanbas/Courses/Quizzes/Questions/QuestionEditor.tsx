@@ -241,7 +241,6 @@ function QuestionEditor() {
                                       id={`choice-${index}`}
                                       name="mcq-choice"
                                       value={choice.text}
-                                      checked={choice.isCorrect}
                                     />
                                     <label
                                       className="ms-2"

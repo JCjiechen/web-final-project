@@ -23,6 +23,7 @@ import {
 import * as client from "./client";
 import { Dropdown } from "react-bootstrap";
 import "./index.css";
+import * as questionClient from "./Questions/client";
 
 function Quizzes() {
   const { courseId } = useParams();
@@ -109,10 +110,19 @@ function Quizzes() {
     });
   };
 
+  const findNumberOfQuestions = async () => {
+    for (const quiz of quizList) {
+      const questions = await questionClient.findQuestionsForQuiz(quiz._id);
+      const updatedQuiz = { ...quiz, questions: questions.length };
+      dispatch(updateQuiz(updatedQuiz));
+    }
+  };
+
   useEffect(() => {
     client
       .findQuizzesForCourse(courseId)
       .then((quizzes) => dispatch(setQuizzes(quizzes)));
+    findNumberOfQuestions();
   }, [courseId]);
 
   interface CustomToggleProps {
