@@ -27,6 +27,23 @@ const QuizPreview = () => {
     (question) => questionList.indexOf(question) + 1 === currentQuestionIndex
   );
 
+  const [scoreList, setScoreList] = useState(
+    Array.from({ length: questionList.length }, (_, index) => ({
+      index,
+      score: 0,
+    }))
+  );
+  const [tempScore, setTempScore] = useState(0);
+  const [finalScore, setFinalScore] = useState(0);
+  const [submit, setSubmit] = useState(false);
+
+  const handleSubmitScore = () => {
+    let value = tempScore;
+    setSubmit(true);
+    scoreList.map((item) => (value += item.score));
+    setFinalScore(value);
+  };
+
   const navigate = useNavigate();
 
   function getCurrentTime() {
@@ -44,6 +61,13 @@ const QuizPreview = () => {
   const currentTime = getCurrentTime();
 
   const handleButtonClick = (direction: any) => {
+    const updatedScore = scoreList.map((item) =>
+      item.index === currentQuestionIndex - 1
+        ? { ...item, score: tempScore }
+        : item
+    );
+    setScoreList(updatedScore);
+    setTempScore(0);
     if (direction === "before" && currentQuestionIndex > 1) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     } else if (
@@ -82,7 +106,6 @@ const QuizPreview = () => {
       <p>Started: {new Date(quiz.availableDate).toISOString().split("T")[0]}</p>
       <h1>Quiz Instructions</h1>
       <hr />
-
       {/* question content start */}
       <div className="row w-100">
         <div className="mb-4 col-10">
@@ -109,7 +132,13 @@ const QuizPreview = () => {
                                 id={`choice-${index}`}
                                 name="mcq-choice"
                                 value={choice.text}
-                                checked={choice.isCorrect}
+                                onChange={(e) => {
+                                  if (e.target.checked && choice.isCorrect) {
+                                    setTempScore(currentQuestion.points);
+                                  } else {
+                                    setTempScore(0);
+                                  }
+                                }}
                               />
                               <label
                                 className="ms-2"
@@ -132,6 +161,16 @@ const QuizPreview = () => {
                           name="answer"
                           id="trueOption"
                           value="true"
+                          onChange={(e) => {
+                            if (
+                              e.target.checked &&
+                              currentQuestion.answerForTF
+                            ) {
+                              setTempScore(currentQuestion.points);
+                            } else {
+                              setTempScore(0);
+                            }
+                          }}
                         />
                         <label
                           className="form-check-label"
@@ -147,6 +186,16 @@ const QuizPreview = () => {
                           name="answer"
                           id="falseOption"
                           value="false"
+                          onChange={(e) => {
+                            if (
+                              e.target.checked &&
+                              !currentQuestion.answerForTF
+                            ) {
+                              setTempScore(currentQuestion.points);
+                            } else {
+                              setTempScore(0);
+                            }
+                          }}
                         />
                         <label
                           className="form-check-label"
@@ -163,7 +212,34 @@ const QuizPreview = () => {
                         {currentQuestion.answerForBlank.map(
                           (answer: any, index: any) => (
                             <div key={index} className="input-box ms-2 mb-2">
-                              <input type="text" className="gray-input" />{" "}
+                              <input
+                                type="text"
+                                className="gray-input"
+                                onChange={(e) => {
+                                  if (answer.isCaseSensitive) {
+                                    if (e.target.value === answer.text) {
+                                      setTempScore(
+                                        tempScore +
+                                          currentQuestion.points /
+                                            currentQuestion.answerForBlank
+                                              .length
+                                      );
+                                    }
+                                  } else {
+                                    if (
+                                      e.target.value.toLowerCase ===
+                                      answer.text.toLowerCase
+                                    ) {
+                                      setTempScore(
+                                        tempScore +
+                                          currentQuestion.points /
+                                            currentQuestion.answerForBlank
+                                              .length
+                                      );
+                                    }
+                                  }
+                                }}
+                              />{" "}
                               {answer.isCaseSensitive && "(Case Sensitive)"}
                             </div>
                           )
@@ -226,9 +302,7 @@ const QuizPreview = () => {
           ))}
         </div>
       </div>
-
       {/* question content end */}
-
       <div className="border text-end w-100">
         Quiz saved at {currentTime}
         <button
@@ -238,7 +312,6 @@ const QuizPreview = () => {
           Submit Quiz
         </button>
       </div>
-
       <div className="mt-4 d-flex">
         <button
           className="btn btn-light d-flex align-items-center flex-grow-1"
@@ -247,6 +320,28 @@ const QuizPreview = () => {
           <TiPencil className="flipped-icon mt-2 mb-2 me-2" />
           <span className="mt-2 mb-2">Keep Editing This Quiz</span>
         </button>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <button
+          className="btn btn-danger mt-2"
+          onClick={() => handleSubmitScore()}
+        >
+          Submit and get your score!
+        </button>
+        {submit && (
+          <span
+            className="m-3 mt-3 text-danger h3"
+            style={{ fontSize: "48px" }}
+          >
+            {finalScore}
+          </span>
+        )}
       </div>
     </>
   );
