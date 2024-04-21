@@ -157,7 +157,7 @@ const QuizPreview = () => {
                       </div>
                     </>
                   )}
-                  {currentQuestion.type === "Fill in the blank" && (
+                  {currentQuestion.type === "Fill in multiple blanks" && (
                     <>
                       <div>
                         {currentQuestion.answerForBlank.map(

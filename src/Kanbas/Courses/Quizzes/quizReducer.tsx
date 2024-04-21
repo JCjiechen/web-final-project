@@ -11,6 +11,7 @@ const initialState = {
     type: "Graded Quiz",
     group: "Quizzes",
     time: 20,
+    isTimeLimit: true,
     attemptTimes: null,
     questions: null,
     availableDate: null,

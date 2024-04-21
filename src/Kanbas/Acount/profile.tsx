@@ -80,6 +80,7 @@ export default function Profile() {
           />
           <input
             className="form-control mb-2"
+            type="date"
             value={profile.dob}
             onChange={(e) => setProfile({ ...profile, dob: e.target.value })}
             placeholder="Date of Birth"

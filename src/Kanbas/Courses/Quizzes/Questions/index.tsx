@@ -56,12 +56,26 @@ function Questions() {
     dispatch(setQuestions(Object.values(initialState)));
   };
 
-  const handleSavePublish = () => {
+  const handleSavePublish = async () => {
+    await handleSave();
     const updatedQuiz = { ...quiz, isPublish: true };
     dispatch(setQuiz({ ...quiz, isPublish: updatedQuiz.isPublish }));
     quizClient.updateQuiz(updatedQuiz).then((updatedQuiz: any) => {
       dispatch(updateQuiz(updatedQuiz));
     });
+  };
+
+  const handleSave = async () => {
+    let totalPoints = 0;
+    const quizQuestionList = await client.findQuestionsForQuiz(quizId);
+    quizQuestionList.forEach((question: any) => {
+      totalPoints += question.points;
+    });
+    const updatedQuiz = { ...quiz, points: totalPoints };
+    console.log(quiz);
+    dispatch(updateQuiz(updatedQuiz));
+    dispatch(setQuiz(updatedQuiz));
+    quizClient.updateQuiz(updatedQuiz);
   };
 
   useEffect(() => {
@@ -151,7 +165,9 @@ function Questions() {
             <button onClick={handleSavePublish} className="btn btn-light m-1">
               Save & Publish
             </button>
-            <button className="btn btn-danger m-1">Save</button>
+            <button onClick={handleSave} className="btn btn-danger m-1">
+              Save
+            </button>
           </div>
         </div>
       </div>

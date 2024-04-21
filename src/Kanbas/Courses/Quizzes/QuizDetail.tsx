@@ -21,9 +21,8 @@ function QuizDetail() {
   const handlePublishClick = () => {
     const updatedQuiz = { ...quiz, isPublish: !quiz.isPublish };
     dispatch(setQuiz({ ...quiz, isPublish: updatedQuiz.isPublish }));
-    client.updateQuiz(updatedQuiz).then((updatedQuiz) => {
-      dispatch(updateQuiz(updatedQuiz));
-    });
+    dispatch(updateQuiz(updatedQuiz));
+    client.updateQuiz(updatedQuiz);
   };
 
   return (
@@ -133,7 +132,8 @@ function QuizDetail() {
             </div>
             <div className="col">
               <div className="input-group">
-                {quiz.time} {quiz.time ? "Minutes" : ""}
+                {quiz.isTimeLimit && quiz.time}{" "}
+                {quiz.time && quiz.isTimeLimit ? "Minutes" : ""}
               </div>
             </div>
           </div>
@@ -216,7 +216,8 @@ function QuizDetail() {
             </div>
             <div className="col">
               <div className="input-group">
-                {new Date(quiz.dueDate).toISOString().split("T")[0]}
+                {quiz.dueDate &&
+                  new Date(quiz.dueDate).toISOString().split("T")[0]}
               </div>
             </div>
           </div>
@@ -229,7 +230,8 @@ function QuizDetail() {
             </div>
             <div className="col">
               <div className="input-group">
-                {new Date(quiz.availableDate).toISOString().split("T")[0]}
+                {quiz.availableDate &&
+                  new Date(quiz.availableDate).toISOString().split("T")[0]}
               </div>
             </div>
           </div>
@@ -242,7 +244,8 @@ function QuizDetail() {
             </div>
             <div className="col">
               <div className="input-group">
-                {new Date(quiz.availableUntilDate).toISOString().split("T")[0]}
+                {quiz.availableUntilDate &&
+                  new Date(quiz.availableUntilDate).toISOString().split("T")[0]}
               </div>
             </div>
           </div>
@@ -268,18 +271,21 @@ function QuizDetail() {
                 <tbody>
                   <tr>
                     <td>
-                      {new Date(quiz.dueDate).toISOString().split("T")[0]}
+                      {quiz.dueDate &&
+                        new Date(quiz.dueDate).toISOString().split("T")[0]}
                     </td>
                     <td>Everyone</td>
                     <td>
-                      {new Date(quiz.availableDate).toISOString().split("T")[0]}
+                      {quiz.availableDate &&
+                        new Date(quiz.availableDate)
+                          .toISOString()
+                          .split("T")[0]}
                     </td>
                     <td>
-                      {
+                      {quiz.availableUntilDate &&
                         new Date(quiz.availableUntilDate)
                           .toISOString()
-                          .split("T")[0]
-                      }
+                          .split("T")[0]}
                     </td>
                   </tr>
                 </tbody>

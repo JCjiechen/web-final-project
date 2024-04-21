@@ -149,6 +149,7 @@ function QuizzEditor() {
                 </div>
                 <div className="col">
                   <select
+                    value={quiz.type}
                     className="form-select mb-3"
                     onChange={(e) =>
                       dispatch(setQuiz({ ...quiz, type: e.target.value }))
@@ -197,6 +198,7 @@ function QuizzEditor() {
                 </div>
                 <div className="col">
                   <select
+                    value={quiz.group}
                     className="form-select mb-3"
                     onChange={(e) =>
                       dispatch(setQuiz({ ...quiz, group: e.target.value }))
@@ -235,6 +237,22 @@ function QuizzEditor() {
                   <label htmlFor="timeLimit" className="form-label">
                     Time Limit (Minutes)
                   </label>
+                </div>
+                <div className="col-1 mb-3">
+                  <input
+                    type="checkbox"
+                    id="timeLimit"
+                    checked={quiz.isTimeLimit}
+                    onChange={(e) => {
+                      dispatch(
+                        setQuiz({
+                          ...quiz,
+                          isTimeLimit: e.target.checked,
+                          time: 0,
+                        })
+                      );
+                    }}
+                  />
                 </div>
                 <div className="col">
                   <input
@@ -282,7 +300,30 @@ function QuizzEditor() {
                   </label>
                 </div>
                 <div className="col">
-                  <select
+                  <input
+                    type="checkbox"
+                    id="multiAttempt"
+                    checked={quiz.showCorrectAnswers === "Immediately"}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        dispatch(
+                          setQuiz({
+                            ...quiz,
+                            showCorrectAnswers: "Immediately",
+                          })
+                        );
+                      } else {
+                        dispatch(
+                          setQuiz({
+                            ...quiz,
+                            showCorrectAnswers: "Never",
+                          })
+                        );
+                      }
+                    }}
+                  />
+                  {/* <select
+                    value={quiz.showCorrectAnswers}
                     className="form-select mb-3"
                     id="showCorrectAnswers"
                     onChange={(e) =>
@@ -294,7 +335,7 @@ function QuizzEditor() {
                     <option>Immediately</option>
                     <option>After Due</option>
                     <option>Never</option>
-                  </select>
+                  </select> */}
                 </div>
               </div>
 
